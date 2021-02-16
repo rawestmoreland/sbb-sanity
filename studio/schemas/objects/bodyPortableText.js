@@ -16,6 +16,7 @@ export default {
         {title: 'H2', value: 'h2'},
         {title: 'H3', value: 'h3'},
         {title: 'H4', value: 'h4'},
+        {title: 'H5', value: 'h5'},
         {title: 'Quote', value: 'blockquote'}
       ],
       lists: [{title: 'Bullet', value: 'bullet'}, {title: 'Number', value: 'number'}],
@@ -48,6 +49,9 @@ export default {
     {
       type: 'mainImage',
       options: {hotspot: true}
+    },
+    {
+      type: 'file'
     }
   ]
 }

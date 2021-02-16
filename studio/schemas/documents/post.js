@@ -24,8 +24,13 @@ export default {
     {
       name: 'publishedAt',
       type: 'datetime',
-      title: 'Published at',
-      description: 'This can be used to schedule post for publishing'
+      title: 'Publish at',
+      description: 'This can be used to schedule post for publishing',
+      options: {
+        dateFormat: 'MM-DD-YYYY',
+        timeFormat: 'HH:mm'
+      },
+      validation: Rule => Rule.error('A published date is required.').required()
     },
     {
       name: 'mainImage',
@@ -68,6 +73,9 @@ export default {
       title: 'Body'
     }
   ],
+  initialValue: {
+    publishedAt: (new Date()).toISOString()
+  },
   orderings: [
     {
       name: 'publishingDateAsc',
@@ -101,17 +109,15 @@ export default {
   preview: {
     select: {
       title: 'title',
-      publishedAt: 'publishedAt',
       slug: 'slug',
       media: 'mainImage'
     },
-    prepare ({title = 'No title', publishedAt, slug = {}, media}) {
-      const dateSegment = format(publishedAt, 'YYYY/MM')
-      const path = `/${dateSegment}/${slug.current}/`
+    prepare ({title = 'No title', slug = {}, media}) {
+      const path = `/${slug.current}/`
       return {
         title,
         media,
-        subtitle: publishedAt ? path : 'Missing publishing date'
+        subtitle: path
       }
     }
   }
