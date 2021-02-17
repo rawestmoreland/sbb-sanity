@@ -5,7 +5,16 @@ const serializers = {
   types: {
     authorReference: ({node}) => <span>{node.author.name}</span>,
     mainImage: Figure,
-    file: ({node}) => <pre>{JSON.stringify(node.asset._ref)}</pre>
+  },
+  marks: {
+    link: ({children, mark}) => 
+      mark.blank ? (
+        <a target="_blank" href={mark.href} rel="noopener noreferer">
+          {children}
+        </a>
+        ) : (
+        <a href={mark.href}>{children}</a>
+        )
   }
 }
 

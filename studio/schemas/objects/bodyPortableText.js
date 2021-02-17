@@ -36,6 +36,11 @@ export default {
                 title: 'URL',
                 name: 'href',
                 type: 'url'
+              },
+              {
+                title: 'Open in a new window',
+                name: 'blank',
+                type: 'boolean'
               }
             ]
           }
@@ -49,9 +54,6 @@ export default {
     {
       type: 'mainImage',
       options: {hotspot: true}
-    },
-    {
-      type: 'file'
     }
   ]
 }
