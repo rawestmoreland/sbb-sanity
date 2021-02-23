@@ -8,11 +8,11 @@ import styles from './IframePreview.module.css'
  * https://www.sanity.io/blog/evolve-authoring-experiences-with-views-and-split-panes
  */
 
-const assemblePostUrl = ({ displayed, options }) => {
-  const { slug } = displayed
-  const { previewURL } = options
+const assemblePostUrl = ({displayed, options}) => {
+  const {slug} = displayed
+  const {previewURL} = options
   if (!slug || !previewURL) {
-    console.warn('Missing slug or previewURL', { slug, previewURL })
+    console.warn('Missing slug or previewURL', {slug, previewURL})
     return ''
   }
   const path = `/${slug.current}/`
@@ -20,8 +20,8 @@ const assemblePostUrl = ({ displayed, options }) => {
 }
 
 const IframePreview = props => {
-  const { options } = props
-  const { displayed } = props.document
+  const {options} = props
+  const {displayed} = props.document
 
   if (!displayed) {
     return (
@@ -31,7 +31,7 @@ const IframePreview = props => {
     )
   }
 
-  const url = assemblePostUrl({ displayed, options })
+  const url = assemblePostUrl({displayed, options})
 
   if (!url) {
     return (

@@ -19,6 +19,12 @@ module.exports = {
         watchMode: !isProd,
         overlayDrafts: !isProd
       }
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+          shortname: `small-batch-bru`
+      }
     }
   ]
 }

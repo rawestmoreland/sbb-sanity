@@ -74,7 +74,7 @@ export default {
     }
   ],
   initialValue: {
-    publishedAt: (new Date()).toISOString()
+    publishedAt: new Date().toISOString()
   },
   orderings: [
     {

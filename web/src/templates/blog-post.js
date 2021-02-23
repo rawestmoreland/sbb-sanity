@@ -6,6 +6,7 @@ import BlogPost from '../components/blog-post'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
 import {toPlainText} from '../lib/helpers'
+import {Disqus} from 'gatsby-plugin-disqus'
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -60,6 +61,10 @@ export const query = graphql`
 const BlogPostTemplate = props => {
   const {data, errors} = props
   const post = data && data.post
+  const disqusConfig = {
+    identifier: post.id,
+    title: post.title
+  }
   return (
     <Layout>
       {errors && <SEO title='GraphQL Error' />}
@@ -72,6 +77,11 @@ const BlogPostTemplate = props => {
       )}
 
       {post && <BlogPost {...post} />}
+      <Container>
+        <Disqus 
+          config={disqusConfig}
+        />
+      </Container>
     </Layout>
   )
 }
