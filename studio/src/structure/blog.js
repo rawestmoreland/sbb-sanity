@@ -1,4 +1,6 @@
 import S from '@sanity/desk-tool/structure-builder'
+import PreviewIFrame from '../components/previewIFrame'
+
 import {
   GoMegaphone as BlogIcon,
   GoChecklist as ApprovedIcon,
@@ -56,7 +58,7 @@ const blog = S.listItem()
                   .schemaType('post')
                   .title('Posts')
                   .filter('_type == "post" && $catId in categories[]._ref')
-                  .params({catId})
+                  .params({ catId })
               )
           ),
         S.divider(),
