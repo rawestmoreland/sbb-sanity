@@ -1,15 +1,15 @@
-import React from 'react'
-import {graphql} from 'gatsby'
+import React from "react"
+import { graphql } from "gatsby"
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture
-} from '../lib/helpers'
-import BlogPostPreviewList from '../components/blog-post-preview-list'
-import Container from '../components/container'
-import GraphQLErrorList from '../components/graphql-error-list'
-import SEO from '../components/seo'
-import Layout from '../containers/layout'
+  filterOutDocsPublishedInTheFuture,
+} from "../lib/helpers"
+import BlogPostPreviewList from "../components/blog-post-preview-list"
+import Container from "../components/container"
+import GraphQLErrorList from "../components/graphql-error-list"
+import SEO from "../components/seo"
+import Layout from "../containers/layout"
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -65,8 +65,8 @@ export const query = graphql`
   }
 `
 
-const IndexPage = props => {
-  const {data, errors} = props
+const IndexPage = (props) => {
+  const { data, errors } = props
 
   if (errors) {
     return (
@@ -79,8 +79,8 @@ const IndexPage = props => {
   const site = (data || {}).site
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
-      .filter(filterOutDocsWithoutSlugs)
-      .filter(filterOutDocsPublishedInTheFuture)
+        .filter(filterOutDocsWithoutSlugs)
+        .filter(filterOutDocsPublishedInTheFuture)
     : []
 
   if (!site) {
@@ -91,17 +91,13 @@ const IndexPage = props => {
 
   return (
     <Layout>
-      <SEO
-        title={site.title}
-        description={site.description}
-        keywords={site.keywords}
-      />
+      <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         {postNodes && (
           <BlogPostPreviewList
-            title='Latest blog posts'
+            title="Latest blog posts"
             nodes={postNodes}
-            browseMoreHref='/archive/'
+            browseMoreHref="/archive/"
           />
         )}
       </Container>

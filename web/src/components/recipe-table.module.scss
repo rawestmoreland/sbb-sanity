@@ -1,0 +1,24 @@
+@import "../styles/variables.scss";
+
+.recipeTableContainer {
+  width: 100%;
+
+  h4 {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.recipeTable {
+  width: 100%;
+  border-collapse: collapse;
+
+  td,
+  th {
+    border: 1px solid $light-grey;
+    padding: 8px;
+  }
+
+  th {
+    text-align: left;
+  }
+}
