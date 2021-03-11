@@ -1,19 +1,17 @@
-const {isFuture} = require('date-fns')
+const { isFuture } = require('date-fns')
 /**
  * Implement Gatsby's Node APIs in this file.
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const {format} = require('date-fns')
+const { format } = require('date-fns')
 
-async function createBlogPostPages (graphql, actions) {
-  const {createPage} = actions
+async function createBlogPostPages(graphql, actions) {
+  const { createPage } = actions
   const result = await graphql(`
     {
-      allSanityPost(
-        filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-      ) {
+      allSanityPost(filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }) {
         edges {
           node {
             id
@@ -32,26 +30,24 @@ async function createBlogPostPages (graphql, actions) {
   const postEdges = (result.data.allSanityPost || {}).edges || []
 
   postEdges
-    .filter(edge => !isFuture(edge.node.publishedAt))
+    .filter((edge) => !isFuture(edge.node.publishedAt))
     .forEach((edge, index) => {
-      const {id, slug = {}} = edge.node
+      const { id, slug = {} } = edge.node
       const path = `/blog/${slug.current}/`
 
       createPage({
         path,
         component: require.resolve('./src/templates/blog-post.js'),
-        context: {id}
+        context: { id },
       })
     })
 }
 
-async function createRecipePages (graphql, actions) {
-  const {createRecipe} = actions
+async function createRecipePages(graphql, actions) {
+  const { createRecipe } = actions
   const result = await graphql(`
     {
-      allSanityRecipe(
-        filter: { slug: { current: { ne: null } } }
-      ) {
+      allSanityRecipe(filter: { slug: { current: { ne: null } } }) {
         edges {
           node {
             id
@@ -66,22 +62,21 @@ async function createRecipePages (graphql, actions) {
 
   if (result.errors) throw result.errors
 
-  const postEdges = (result.data.allSanityRecipe || {}).edges || []
+  const recipeEdges = (result.data.allSanityRecipe || {}).edges || []
 
-  postEdges
-    .forEach((edge, index) => {
-      const {id, slug = {}} = edge.node
-      const path = `/blog/${slug.current}/`
+  recipeEdges.forEach((edge, index) => {
+    const { id, slug = {} } = edge.node
+    const path = `/recipe/${slug.current}/`
 
-      createPage({
-        path,
-        component: require.resolve('./src/templates/recipe.js'),
-        context: {id}
-      })
+    createRecipe({
+      path,
+      component: require.resolve('./src/templates/recipe.js'),
+      context: { id },
     })
+  })
 }
 
-exports.createPages = async ({graphql, actions}) => {
+exports.createPages = async ({ graphql, actions }) => {
   await createBlogPostPages(graphql, actions)
   await createRecipePages(graphql, actions)
 }
