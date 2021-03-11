@@ -44,7 +44,7 @@ async function createBlogPostPages(graphql, actions) {
 }
 
 async function createRecipePages(graphql, actions) {
-  const { createRecipe } = actions
+  const { createPage } = actions
   const result = await graphql(`
     {
       allSanityRecipe(filter: { slug: { current: { ne: null } } }) {
@@ -68,7 +68,7 @@ async function createRecipePages(graphql, actions) {
     const { id, slug = {} } = edge.node
     const path = `/recipe/${slug.current}/`
 
-    createRecipe({
+    createPage({
       path,
       component: require.resolve('./src/templates/recipe.js'),
       context: { id },
