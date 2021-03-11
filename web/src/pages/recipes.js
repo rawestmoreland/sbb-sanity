@@ -1,18 +1,19 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { mapEdgesToNodes } from "../lib/helpers"
-import RecipePreviewTable from "../components/recipe-preview-table"
-import Container from "../components/container"
-import GraphQLErrorList from "../components/graphql-error-list"
-import SEO from "../components/seo"
-import Layout from "../containers/layout"
+import React from 'react'
+import { useTable } from 'react-table'
+import { graphql } from 'gatsby'
+import { mapEdgesToNodes } from '../lib/helpers'
+import RecipePreviewTable from '../components/recipe-preview-table'
+import Container from '../components/container'
+import GraphQLErrorList from '../components/graphql-error-list'
+import SEO from '../components/seo'
+import Layout from '../containers/layout'
 
-import { responsiveTitle1 } from "../components/typography.module.css"
+import { responsiveTitle1 } from '../components/typography.module.css'
 
 export const query = graphql`
   query RecipePageQuery {
     recipes: allSanityRecipe(
-      sort: { order: DESC, fields: file___asset____createdAt }
+      sort: { order: DESC, fields: brewDate }
       filter: { slug: { current: { ne: "null" } } }
     ) {
       edges {
@@ -22,6 +23,19 @@ export const query = graphql`
               url
             }
           }
+          title
+          slug {
+            current
+          }
+          ibu
+          style
+          bjcp
+          abv
+          batchSize
+          fermentation
+          score
+          recipePage
+          brewDate
         }
       }
     }
@@ -46,6 +60,7 @@ const RecipesPage = (props) => {
       <SEO title="Recipes" />
       <Container>
         <h1 className={responsiveTitle1}>Recipes</h1>
+        {recipeNodes && recipeNodes.length > 0 && <RecipePreviewTable nodes={recipeNodes} />}
       </Container>
     </Layout>
   )

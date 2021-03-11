@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import styles from "./recipe-table.module.scss"
 import {
   tableHeaders,
-  celToFar,
   dataFromObject,
   rowsFromArray,
   tableTitles,
@@ -27,12 +26,17 @@ export default ({ node }) => {
       .then((res) => res.json())
       .then((jsonRes) => jsonRes)
       .catch((error) => console.warn(error.message))
-    console.log(response)
+
+    response = response._type === 'batch' ? response.recipe : response
+
+    // If we uplad a batch file, then look at response.recipe
     let { batchSize, boilTime, ibu, abv, color, fg, og } = response
+
     let fermentables = []
     let hops = []
     let yeast = []
     let mash = []
+
     response.fermentables.forEach((f, i) => {
       fermentables.push({
         name: f.name,
@@ -40,6 +44,7 @@ export default ({ node }) => {
         percentage: f.percentage,
       })
     })
+
     response.hops.map((h) =>
       hops.push({
         name: h.name,
@@ -50,6 +55,7 @@ export default ({ node }) => {
         alpha: h.alpha,
       })
     )
+
     response.yeasts.map((y) =>
       yeast.push({
         name: y.name,
@@ -58,6 +64,7 @@ export default ({ node }) => {
         temperature: `${y.minTemp} - ${y.maxTemp} º ${response.defaults.temp.toUpperCase()}`,
       })
     )
+
     response.mash.steps.map((m) =>
       mash.push({
         name: m.type,
@@ -65,6 +72,7 @@ export default ({ node }) => {
         time: `${m.stepTime} min`,
       })
     )
+
     setRecipe({
       details: {
         batchSize: batchSize.toFixed(2),

@@ -68,7 +68,8 @@ export default {
       name: 'recipe',
       title: 'JSON Recipe File',
       fields: [
-        { name: 'reference', type: 'reference', title: 'Reference', to: [{ type: 'recipe' }] }
+        { name: 'reference', type: 'reference', title: 'Reference', to: [{ type: 'recipe' }] },
+        {name: 'actuals', type: 'boolean', title: 'Show actuals'}
       ],
       preview: { select: { title: 'reference.title' } }
     }

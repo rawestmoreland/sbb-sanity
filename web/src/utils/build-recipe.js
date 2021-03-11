@@ -10,11 +10,6 @@ export const tableHeaders = {
   mash: ["Type", "Temperature", "Time"],
 }
 
-// Celsius to Fahrenheit conversion
-export const celToFar = (temp) => {
-  return ((temp - 32) * (5 / 9)).toFixed()
-}
-
 export const dataFromObject = (d) => {
   return Object.entries(d).map(([key, value]) => <td key={key}>{value}</td>)
 }

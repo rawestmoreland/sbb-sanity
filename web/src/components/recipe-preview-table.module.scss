@@ -1,0 +1,41 @@
+@import "../styles/variables.scss";
+
+table.recipePreviewTable {
+  border-collapse: collapse;
+  width: 100%;
+  th,
+  td {
+    margin: 0;
+    padding: 12px;
+    border: 1px solid $light-grey;
+
+    a {
+      color: $mine-shaft;
+
+      &:visited {
+        color: $mine-shaft;
+      }
+    }
+  }
+
+  th {
+    border-bottom: 1px solid $black;
+    text-align: left;
+    background-color: $white;
+  }
+
+  tr:nth-child(odd) {
+    background-color: $concrete
+  }
+}
+
+.headerCell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    display: flex;
+    align-items: center;
+  }
+}

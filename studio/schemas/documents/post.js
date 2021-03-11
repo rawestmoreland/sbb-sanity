@@ -19,7 +19,8 @@ export default {
       options: {
         source: 'title',
         maxLength: 96
-      }
+      },
+      validation: Rule => Rule.error('A slug is required').required()
     },
     {
       name: 'publishedAt',

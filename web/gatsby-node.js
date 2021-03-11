@@ -45,6 +45,43 @@ async function createBlogPostPages (graphql, actions) {
     })
 }
 
+async function createRecipePages (graphql, actions) {
+  const {createRecipe} = actions
+  const result = await graphql(`
+    {
+      allSanityRecipe(
+        filter: { slug: { current: { ne: null } } }
+      ) {
+        edges {
+          node {
+            id
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) throw result.errors
+
+  const postEdges = (result.data.allSanityRecipe || {}).edges || []
+
+  postEdges
+    .forEach((edge, index) => {
+      const {id, slug = {}} = edge.node
+      const path = `/blog/${slug.current}/`
+
+      createPage({
+        path,
+        component: require.resolve('./src/templates/recipe.js'),
+        context: {id}
+      })
+    })
+}
+
 exports.createPages = async ({graphql, actions}) => {
   await createBlogPostPages(graphql, actions)
+  await createRecipePages(graphql, actions)
 }
