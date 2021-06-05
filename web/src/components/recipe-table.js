@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from "react"
-import styles from "./recipe-table.module.scss"
-import {
-  tableHeaders,
-  dataFromObject,
-  rowsFromArray,
-  tableTitles,
-} from "../utils/build-recipe"
+import React, { useEffect, useState } from 'react'
+import styles from './recipe-table.module.scss'
+import { tableHeaders, dataFromObject, rowsFromArray, tableTitles } from '../utils/build-recipe'
 
 export default ({ node }) => {
   if (
@@ -92,7 +87,6 @@ export default ({ node }) => {
   }
 
   const RecipeTable = ({ recipe }) => {
-    console.log(recipe)
     return (
       <>
         <h4>Recipe Details</h4>
@@ -162,7 +156,7 @@ export default ({ node }) => {
 
   return (
     <div className={styles.recipeTableContainer}>
-      {loading ? "Loading..." : <RecipeTable recipe={recipe} />}
+      {loading ? 'Loading...' : <RecipeTable recipe={recipe} />}
     </div>
   )
 }

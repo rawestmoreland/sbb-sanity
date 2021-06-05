@@ -2,6 +2,9 @@
 @import '../styles/custom-properties.css';
 
 .content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   background: var(--color-white);
   min-height: calc(100% - 73px - 120px);
 
@@ -10,39 +13,8 @@
   }
 }
 
-.footer {
-  border-top: 1px solid var(--color-very-light-gray);
-
-  @nest & a {
-    color: inherit;
-    text-decoration: none;
-
-    @media (hover: hover) {
-      @nest &:hover {
-        color: var(--color-accent);
-      }
-    }
-  }
+.mainContent {
 }
 
-.footerWrapper {
-  box-sizing: border-box;
-  max-width: 960px;
-  padding: 4.5em 1.5em 1.5em;
-  margin: 0 auto;
-
-  @media (--media-min-small) {
-    padding: 6em 2em 2em;
-  }
-}
-
-.companyAddress {
-  text-align: center;
-  margin: 0 0 1rem;
-}
-
-.siteInfo {
-  text-align: center;
-  font-size: var(--font-small-size);
-  line-height: var(--font-small-line-height);
+.sidebarContent {
 }

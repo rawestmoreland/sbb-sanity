@@ -1,9 +1,9 @@
-import { Link } from "gatsby"
-import React from "react"
-import Icon from "./icon"
-import { cn } from "../lib/helpers"
+import { Link } from 'gatsby'
+import React from 'react'
+import Icon from './icon'
+import { cn } from '../lib/helpers'
 
-import styles from "./header.module.css"
+import styles from './header.module.css'
 
 const Header = ({ onHideNav, onShowNav, showNav, siteTitle, subTitle }) => (
   <div className={styles.root}>
@@ -20,17 +20,17 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, subTitle }) => (
         <nav className={cn(styles.nav, showNav && styles.showNav)}>
           <ul>
             <li>
-              <Link to="/" activeStyle={{ fontWeight: "bold" }}>
+              <Link to="/" activeStyle={{ fontWeight: 'bold' }}>
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/recipes/" activeStyle={{ fontWeight: "bold" }}>
+              <Link to="/recipes/" activeStyle={{ fontWeight: 'bold' }}>
                 Recipes
               </Link>
             </li>
             <li>
-              <Link to="/archive/" activeStyle={{ fontWeight: "bold" }}>
+              <Link to="/archive/" activeStyle={{ fontWeight: 'bold' }}>
                 Archive
               </Link>
             </li>

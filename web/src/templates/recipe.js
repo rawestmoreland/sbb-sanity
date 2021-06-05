@@ -29,7 +29,6 @@ const RecipeTemplate = (props) => {
           <GraphQLErrorList errors={errors} />
         </Container>
       )}
-      {recipe && <Recipe {...recipe} />}
     </Layout>
   )
 }

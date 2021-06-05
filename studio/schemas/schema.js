@@ -10,6 +10,8 @@ import category from './documents/category'
 import post from './documents/post'
 import recipe from './documents/recipe'
 import siteSettings from './documents/siteSettings'
+import sidebar from './documents/sidebar'
+import imageWidget from './documents/sidebarImageWidget'
 
 // Object types
 import bodyPortableText from './objects/bodyPortableText'
@@ -29,6 +31,8 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     siteSettings,
+    sidebar,
+    imageWidget,
     post,
     recipe,
     recipeReference,

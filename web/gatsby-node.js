@@ -66,7 +66,7 @@ async function createRecipePages(graphql, actions) {
 
   recipeEdges.forEach((edge, index) => {
     const { id, slug = {} } = edge.node
-    const path = `/recipe/${slug.current}/`
+    const path = `/recipes/${slug.current}/`
 
     createPage({
       path,

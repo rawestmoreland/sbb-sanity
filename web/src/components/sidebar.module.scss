@@ -1,0 +1,30 @@
+@import '../styles/custom-media.css';
+
+.sidebarContent {
+  padding: 5.5em 0 0 2em;
+  text-align: center;
+
+  @media screen and (max-width: 1024px) {
+    padding: 0;
+  }
+}
+
+.widgetContainer {
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  img {
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    min-width: 200px;
+  }
+}

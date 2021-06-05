@@ -10,7 +10,7 @@
 .inList {
   composes: root;
 
-  @media (--media-min-medium) {
+  @media (--media-min-xlarge) {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 2em;

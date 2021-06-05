@@ -1,15 +1,16 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture,
-} from "../lib/helpers"
-import BlogPostPreviewList from "../components/blog-post-preview-list"
-import Container from "../components/container"
-import GraphQLErrorList from "../components/graphql-error-list"
-import SEO from "../components/seo"
-import Layout from "../containers/layout"
+} from '../lib/helpers'
+import BlogPostPreviewList from '../components/blog-post-preview-list'
+import Container from '../components/container'
+import GraphQLErrorList from '../components/graphql-error-list'
+import SEO from '../components/seo'
+import Layout from '../containers/layout'
+import Sidebar from '../components/sidebar'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -92,7 +93,7 @@ const IndexPage = (props) => {
   return (
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
-      <Container>
+      <Container homepage={true}>
         {postNodes && (
           <BlogPostPreviewList
             title="Latest blog posts"
@@ -100,6 +101,7 @@ const IndexPage = (props) => {
             browseMoreHref="/archive/"
           />
         )}
+        <Sidebar />
       </Container>
     </Layout>
   )

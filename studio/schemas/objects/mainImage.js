@@ -23,6 +23,16 @@ export default {
       options: {
         isHighlighted: true
       }
+    },
+    {
+      name: 'link',
+      type: 'url',
+      title: 'Link to'
+    },
+    {
+      title: 'Open in a new window',
+      name: 'blank',
+      type: 'boolean'
     }
   ],
   preview: {

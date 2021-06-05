@@ -59,6 +59,14 @@ export default () =>
       S.divider(),
       blog,
       S.listItem()
+        .title('Sidebar')
+        .icon()
+        .child(
+          S.document()
+            .schemaType('blogSidebar')
+            .documentId('blogSidebar')
+        ),
+      S.listItem()
         .title('Recipes')
         .icon(BeerIcon)
         .child(S.documentTypeList('recipe').title('Recipes')),
