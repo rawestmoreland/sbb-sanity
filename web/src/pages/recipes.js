@@ -58,10 +58,8 @@ const RecipesPage = (props) => {
   return (
     <Layout>
       <SEO title="Recipes" />
-      <Container>
-        <h1 className={responsiveTitle1}>Recipes</h1>
-        {recipeNodes && recipeNodes.length > 0 && <RecipePreviewTable nodes={recipeNodes} />}
-      </Container>
+      <h1 className={responsiveTitle1}>Recipes</h1>
+      {recipeNodes && recipeNodes.length > 0 && <RecipePreviewTable nodes={recipeNodes} />}
     </Layout>
   )
 }

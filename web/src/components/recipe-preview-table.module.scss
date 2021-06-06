@@ -1,6 +1,8 @@
-@import "../styles/variables.scss";
+@import '../styles/variables.scss';
 
 table.recipePreviewTable {
+  display: block;
+  overflow-x: auto;
   border-collapse: collapse;
   width: 100%;
   th,
@@ -25,7 +27,7 @@ table.recipePreviewTable {
   }
 
   tr:nth-child(odd) {
-    background-color: $concrete
+    background-color: $concrete;
   }
 }
 

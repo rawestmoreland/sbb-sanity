@@ -1,16 +1,19 @@
 import React, { useMemo } from 'react'
-import {Link} from 'gatsby'
+import { Link } from 'gatsby'
 import { useTable, useSortBy } from 'react-table'
 import { nodesToTableData, getRecipeUrl } from '../lib/helpers'
-import {AiOutlineCaretDown as DownIcon, AiOutlineCaretUp as UpIcon} from 'react-icons/ai'
+import { AiOutlineCaretDown as DownIcon, AiOutlineCaretUp as UpIcon } from 'react-icons/ai'
 
 import styles from './recipe-preview-table.module.scss'
 
 const Table = ({ columns, data }) => {
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
-    columns,
-    data,
-  }, useSortBy)
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
+    {
+      columns,
+      data,
+    },
+    useSortBy
+  )
 
   // Render the UI for your table
   return (
@@ -28,18 +31,14 @@ const Table = ({ columns, data }) => {
                   // Apply the header cell props
                   <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                     <div className={styles.headerCell}>
-                    {
-                      // Render the header
-                      column.render('Header')
-                    }
-                    <span>
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? <DownIcon />
-                          : <UpIcon />
-                        : ''}
+                      {
+                        // Render the header
+                        column.render('Header')
+                      }
+                      <span>
+                        {column.isSorted ? column.isSortedDesc ? <DownIcon /> : <UpIcon /> : ''}
                       </span>
-                      </div>
+                    </div>
                   </th>
                 ))
               }
@@ -133,7 +132,7 @@ const RecipePreviewTable = (props) => {
     },
   ])
   return (
-    <div>
+    <div style={{ display: 'flex' }}>
       <Table columns={columns} data={data} />
     </div>
   )
