@@ -28,6 +28,7 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, subTitle }) => (
               <Link to="/recipes/" activeStyle={{ fontWeight: 'bold' }}>
                 Recipes
               </Link>
+            </li>
             <li>
               <Link to="/archive/" activeStyle={{ fontWeight: 'bold' }}>
                 Archive
