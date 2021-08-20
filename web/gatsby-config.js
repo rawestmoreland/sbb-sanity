@@ -12,13 +12,19 @@ module.exports = {
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: [process.env.GOOGLE_GA, process.env.GOOGLE_UNIVERSAL],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-gtag`,
+    //   options: {
+    //     // You can add multiple tracking ids and a pageview event will be fired for all of them.
+    //     trackingIds: [process.env.GOOGLE_GA, process.env.GOOGLE_UNIVERSAL],
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: process.env.GOOGLE_UNIVERSAL,
+    //   },
+    // },
     {
       resolve: 'gatsby-source-sanity',
       options: {
