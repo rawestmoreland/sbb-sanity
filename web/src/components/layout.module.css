@@ -2,9 +2,8 @@
 @import '../styles/custom-properties.css';
 
 .content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  max-width: 80%;
+  margin: 0 auto;
   background: var(--color-white);
   min-height: calc(100% - 73px - 120px);
 
