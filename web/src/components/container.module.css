@@ -2,13 +2,7 @@
 
 .root {
   box-sizing: border-box;
-  max-width: 90%;
-  padding: 1.5em;
   margin: 0 auto;
-
-  @media (--media-min-small) {
-    padding: 2em;
-  }
 
   @media (--media-max-xlarge) {
     display: block !important;

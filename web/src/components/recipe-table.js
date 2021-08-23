@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import styles from './recipe-table.module.scss'
 import { tableHeaders, dataFromObject, rowsFromArray, tableTitles } from '../utils/build-recipe'
+import { celToFar } from '../lib/helpers'
 
-export default ({ node }) => {
-  if (
-    !node ||
-    !node.reference ||
-    !node.reference._rawFile ||
-    !node.reference._rawFile.asset ||
-    !node.reference._rawFile.asset.url
-  ) {
+const RecipeTableWrapper = ({ url }) => {
+  if (!url || url === '') {
     return null
   }
+
+  console.log(url)
 
   const [loading, setLoading] = useState(true)
   const [recipe, setRecipe] = useState()
 
   const fetchRecipe = async () => {
-    let response = await fetch(node.reference._rawFile.asset.url)
+    let response = await fetch(url)
       .then((res) => res.json())
       .then((jsonRes) => jsonRes)
       .catch((error) => console.warn(error.message))
@@ -56,14 +53,17 @@ export default ({ node }) => {
         name: y.name,
         lab: y.laboratory,
         attenuation: y.attenuation,
-        temperature: `${y.minTemp} - ${y.maxTemp} º ${response.defaults.temp.toUpperCase()}`,
+        temperature:
+          y.minTemp &&
+          y.maxTemp &&
+          `${y.minTemp} - ${y.maxTemp} º ${response.defaults.temp.toUpperCase()}`,
       })
     )
 
     response.mash.steps.map((m) =>
       mash.push({
         name: m.type,
-        temperature: `${m.stepTemp} º ${response.defaults.temp.toUpperCase()}`,
+        temperature: `${celToFar(m.stepTemp)} º ${response.defaults.temp.toUpperCase()}`,
         time: `${m.stepTime} min`,
       })
     )
@@ -160,3 +160,5 @@ export default ({ node }) => {
     </div>
   )
 }
+
+export default RecipeTableWrapper

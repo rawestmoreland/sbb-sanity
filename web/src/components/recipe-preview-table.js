@@ -80,9 +80,9 @@ const Table = ({ columns, data }) => {
 }
 
 const RecipePreviewTable = (props) => {
-  console.log(props)
   let data = []
   props.nodes.map((r) => {
+    console.log(r)
     const { title, batchSize, style, fermentation, bjcp, abv, ibu, score, recipePage } = r
     if (recipePage) {
       data.push({

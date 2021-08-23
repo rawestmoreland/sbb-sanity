@@ -8,6 +8,7 @@ const clientConfig = require('./client-config')
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
+  flags: { QUERY_ON_DEMAND: false },
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
