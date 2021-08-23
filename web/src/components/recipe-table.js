@@ -8,7 +8,6 @@ const RecipeTableWrapper = ({ url }) => {
     return null
   }
 
-  console.log(url)
 
   const [loading, setLoading] = useState(true)
   const [recipe, setRecipe] = useState()
